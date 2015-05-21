@@ -1,18 +1,18 @@
 //
-//  SecondViewController.m
+//  FirstViewController.m
 //  RoverDemo
 //
 //  Created by Zoe M on 5/21/15.
 //  Copyright (c) 2015 Zoe M. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "InputViewController.h"
 
-@interface SecondViewController ()
+@interface InputViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation InputViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

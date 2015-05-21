@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  RoverCell.h
 //  RoverDemo
 //
 //  Created by Zoe M on 5/21/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
-
+@interface RoverCell : UITableViewCell
 
 @end
-

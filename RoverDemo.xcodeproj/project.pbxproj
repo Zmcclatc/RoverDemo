@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		CE3587501B0E907C00B58324 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35874F1B0E907C00B58324 /* main.m */; };
 		CE3587531B0E907C00B58324 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587521B0E907C00B58324 /* AppDelegate.m */; };
-		CE3587561B0E907C00B58324 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587551B0E907C00B58324 /* FirstViewController.m */; };
-		CE3587591B0E907C00B58324 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587581B0E907C00B58324 /* SecondViewController.m */; };
+		CE3587561B0E907C00B58324 /* InputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587551B0E907C00B58324 /* InputViewController.m */; };
+		CE3587591B0E907C00B58324 /* SimulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587581B0E907C00B58324 /* SimulationViewController.m */; };
 		CE35875C1B0E907C00B58324 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE35875A1B0E907C00B58324 /* Main.storyboard */; };
 		CE35875E1B0E907C00B58324 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE35875D1B0E907C00B58324 /* Images.xcassets */; };
 		CE3587611B0E907C00B58324 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE35875F1B0E907C00B58324 /* LaunchScreen.xib */; };
 		CE35876D1B0E907C00B58324 /* RoverDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35876C1B0E907C00B58324 /* RoverDemoTests.m */; };
+		CE35877B1B0E99BD00B58324 /* Simulator.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35877A1B0E99BD00B58324 /* Simulator.m */; };
+		CE35877E1B0E99CD00B58324 /* Rover.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35877D1B0E99CD00B58324 /* Rover.m */; };
+		CE3587811B0E99DE00B58324 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587801B0E99DE00B58324 /* Grid.m */; };
+		CE3587841B0EA24D00B58324 /* RoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587831B0EA24D00B58324 /* RoverCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,16 +37,24 @@
 		CE35874F1B0E907C00B58324 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE3587511B0E907C00B58324 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CE3587521B0E907C00B58324 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CE3587541B0E907C00B58324 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		CE3587551B0E907C00B58324 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		CE3587571B0E907C00B58324 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		CE3587581B0E907C00B58324 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		CE3587541B0E907C00B58324 /* InputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InputViewController.h; sourceTree = "<group>"; };
+		CE3587551B0E907C00B58324 /* InputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InputViewController.m; sourceTree = "<group>"; };
+		CE3587571B0E907C00B58324 /* SimulationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimulationViewController.h; sourceTree = "<group>"; };
+		CE3587581B0E907C00B58324 /* SimulationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SimulationViewController.m; sourceTree = "<group>"; };
 		CE35875B1B0E907C00B58324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE35875D1B0E907C00B58324 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE3587601B0E907C00B58324 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CE3587661B0E907C00B58324 /* RoverDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RoverDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE35876B1B0E907C00B58324 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE35876C1B0E907C00B58324 /* RoverDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoverDemoTests.m; sourceTree = "<group>"; };
+		CE3587791B0E99BD00B58324 /* Simulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Simulator.h; sourceTree = "<group>"; };
+		CE35877A1B0E99BD00B58324 /* Simulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Simulator.m; sourceTree = "<group>"; };
+		CE35877C1B0E99CC00B58324 /* Rover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rover.h; sourceTree = "<group>"; };
+		CE35877D1B0E99CD00B58324 /* Rover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rover.m; sourceTree = "<group>"; };
+		CE35877F1B0E99DE00B58324 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid.h; sourceTree = "<group>"; };
+		CE3587801B0E99DE00B58324 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
+		CE3587821B0EA24D00B58324 /* RoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoverCell.h; sourceTree = "<group>"; };
+		CE3587831B0EA24D00B58324 /* RoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoverCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,13 +96,11 @@
 		CE35874C1B0E907C00B58324 /* RoverDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE3587781B0E926100B58324 /* View */,
+				CE3587771B0E924F00B58324 /* Model */,
+				CE3587761B0E924700B58324 /* Controllers */,
 				CE3587511B0E907C00B58324 /* AppDelegate.h */,
 				CE3587521B0E907C00B58324 /* AppDelegate.m */,
-				CE3587541B0E907C00B58324 /* FirstViewController.h */,
-				CE3587551B0E907C00B58324 /* FirstViewController.m */,
-				CE3587571B0E907C00B58324 /* SecondViewController.h */,
-				CE3587581B0E907C00B58324 /* SecondViewController.m */,
-				CE35875A1B0E907C00B58324 /* Main.storyboard */,
 				CE35875D1B0E907C00B58324 /* Images.xcassets */,
 				CE35875F1B0E907C00B58324 /* LaunchScreen.xib */,
 				CE35874D1B0E907C00B58324 /* Supporting Files */,
@@ -122,6 +132,40 @@
 				CE35876B1B0E907C00B58324 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE3587761B0E924700B58324 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CE3587541B0E907C00B58324 /* InputViewController.h */,
+				CE3587551B0E907C00B58324 /* InputViewController.m */,
+				CE3587571B0E907C00B58324 /* SimulationViewController.h */,
+				CE3587581B0E907C00B58324 /* SimulationViewController.m */,
+				CE3587821B0EA24D00B58324 /* RoverCell.h */,
+				CE3587831B0EA24D00B58324 /* RoverCell.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		CE3587771B0E924F00B58324 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE3587791B0E99BD00B58324 /* Simulator.h */,
+				CE35877A1B0E99BD00B58324 /* Simulator.m */,
+				CE35877C1B0E99CC00B58324 /* Rover.h */,
+				CE35877D1B0E99CD00B58324 /* Rover.m */,
+				CE35877F1B0E99DE00B58324 /* Grid.h */,
+				CE3587801B0E99DE00B58324 /* Grid.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CE3587781B0E926100B58324 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE35875A1B0E907C00B58324 /* Main.storyboard */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,9 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE3587591B0E907C00B58324 /* SecondViewController.m in Sources */,
+				CE35877E1B0E99CD00B58324 /* Rover.m in Sources */,
+				CE3587591B0E907C00B58324 /* SimulationViewController.m in Sources */,
+				CE35877B1B0E99BD00B58324 /* Simulator.m in Sources */,
+				CE3587811B0E99DE00B58324 /* Grid.m in Sources */,
+				CE3587841B0EA24D00B58324 /* RoverCell.m in Sources */,
 				CE3587531B0E907C00B58324 /* AppDelegate.m in Sources */,
-				CE3587561B0E907C00B58324 /* FirstViewController.m in Sources */,
+				CE3587561B0E907C00B58324 /* InputViewController.m in Sources */,
 				CE3587501B0E907C00B58324 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

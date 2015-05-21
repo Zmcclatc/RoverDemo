@@ -1,15 +1,13 @@
 //
-//  FirstViewController.h
+//  Simulator.h
 //  RoverDemo
 //
 //  Created by Zoe M on 5/21/15.
 //  Copyright (c) 2015 Zoe M. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@interface FirstViewController : UIViewController
-
+@interface Simulator : NSObject
 
 @end
-
