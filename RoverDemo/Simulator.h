@@ -21,8 +21,11 @@
 -(id)init;
 //Input an attempted move.
 -(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
-//Return
+//Return whether or not the given rover has a valid move.
 -(bool)checkValidMove:(Rover*)rover;
+
+-(int)getWidth;
+-(int)getHeight;
 
 
 @optional
@@ -32,24 +35,23 @@
 
 @interface Simulator : NSObject
 
-@property (weak,nonatomic) id <GridProtocol> myGrid;
-@property (strong,nonatomic) NSArray* myRovers;
++(id)getSimulation;
+
 
 //Simulator ticks can be triggered individually if need be.
-+(void)tick;
+-(void)tick;
 //Alternately, the entire simulator can be run at once - basically this Ticks until all Rovers have returned 'can't move' or 'out of moves'.
-+(void)compute;
-
-+(void)resetPositions;
-
-+(int)numberOfRovers;
-
-+(int)getRover:(int)roverIndex;
-
-+(void)updateGridWidth:(int)width andHeight:(int)height;
-
-+(int)getGridWidth;
-
-+(int)getGridHeight;
+-(void)compute;
+//This is used to clear the board and run again, or before returning to the sim view.
+-(void)resetPositions;
+//For setup tableview purposes.
+-(int)numberOfRovers;
+//So we can get the details of said rover. Potentially later we can expand this to use a delegate and any number of types of object in the grid.
+-(Rover*)getRover:(int)roverIndex;
+//Since the grid is 'part of' the simulation, we're updating it with a passthrough.
+-(void)updateGridWidth:(int)width andHeight:(int)height;
+//Getter methods for controlling input and the visual side of the simulation.
+-(int)getGridWidth;
+-(int)getGridHeight;
 
 @end

@@ -12,7 +12,7 @@
     NSMutableDictionary* roverList;//We need access to the positions of all rovers we've dealt with in order to handle collisions.
 @synthesize width;
 @synthesize height;
--(id)init
+-(id<GridProtocol>)init
 {
     self=[super init];
     self.width=6;
@@ -20,7 +20,7 @@
     return self;
 }
 
--(id)initWithWidth:(int)gridWidth andHeight:(int)gridHeight
+-(id<GridProtocol>)initWithWidth:(int)gridWidth andHeight:(int)gridHeight
 {
     self=[super init];
     width=gridWidth;
@@ -38,5 +38,13 @@
     return true;
 }
 
+-(int)getHeight
+{
+    return height;
+}
+-(int)getWidth
+{
+    return width;
+}
 
 @end

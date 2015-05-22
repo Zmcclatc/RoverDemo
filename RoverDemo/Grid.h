@@ -18,12 +18,15 @@
     @property int width; //By default these are identical.
     @property int height;
 
--(id)init;
+-(id<GridProtocol>)init;
 
--(id)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
+-(id<GridProtocol>)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
 //Input an attempted move.
 -(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
-//Return
+//Return whether or not the given rover's next move is valid. This is computed over time according to the grid's internal logic.
 -(bool)checkValidMove:(Rover*)rover;
+//Kinda self-explanatory getters.
+-(int)getWidth;
+-(int)getHeight;
 
 @end
