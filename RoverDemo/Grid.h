@@ -17,15 +17,13 @@
 @interface Grid : NSObject<GridProtocol>
     @property int width; //By default these are identical.
     @property int height;
-    @property (nonatomic, retain) NSMutableArray* roverList;//We need access to the positions of all rovers to handle collisions.
-+(Grid*)init;
 
-+(Grid*)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
+-(id)init;
 
-+(bool)attemptAddRover:(Rover*)newRover;
-
-+(void)finalizeMoves;
-
-+(bool)attemptMoveToXCoord:(int)newXCoord andYCoord:(int)newYCoord;
+-(id)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
+//Input an attempted move.
+-(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
+//Return
+-(bool)checkValidMove:(Rover*)rover;
 
 @end

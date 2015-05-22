@@ -24,4 +24,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)btnTick:(id)sender {
+}
+
+- (IBAction)btnComplete:(id)sender {
+}
+
+- (IBAction)btnReset:(id)sender {
+}
 @end

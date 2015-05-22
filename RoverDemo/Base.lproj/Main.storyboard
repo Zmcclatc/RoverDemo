@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -26,8 +27,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem title="Simulation Input" id="Pox-fT-PO4">
-                                        <barButtonItem key="leftBarButtonItem" title="Add Rover" id="W8F-9b-mj0"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Update Simulation" id="7hE-GM-tks"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Add Rover" id="W8F-9b-mj0">
+                                            <connections>
+                                                <action selector="btnAdd:" destination="9pv-A4-QxB" id="iFS-vF-4LO"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -67,7 +71,7 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Lua-cv-hub">
                                 <rect key="frame" x="16" y="104" width="568" height="447"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.82325205180000005" green="0.82325205180000005" blue="0.82325205180000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RoverCell" rowHeight="80" id="KAb-kX-Pn7" customClass="RoverCell">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="44"/>
@@ -179,7 +183,42 @@
                     <view key="view" contentMode="scaleToFill" id="xeS-RM-tUs">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFR-9n-vMH">
+                                <rect key="frame" x="150" y="42" width="300" height="143"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulation Collision Handling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzo-Ez-TA5">
+                                        <rect key="frame" x="33" y="43" width="234" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zK0-6j-NGA">
+                                        <rect key="frame" x="40" y="72" width="221" height="29"/>
+                                        <segments>
+                                            <segment title="Simultaneous"/>
+                                            <segment title="In Order"/>
+                                        </segments>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zzo-Ez-TA5" firstAttribute="centerX" secondItem="bFR-9n-vMH" secondAttribute="centerX" id="6Tv-D6-eJz"/>
+                                    <constraint firstItem="zK0-6j-NGA" firstAttribute="top" secondItem="zzo-Ez-TA5" secondAttribute="bottom" constant="8" symbolic="YES" id="M4s-36-dpT"/>
+                                    <constraint firstItem="zzo-Ez-TA5" firstAttribute="top" secondItem="bFR-9n-vMH" secondAttribute="top" constant="43" id="bLj-LP-Ony"/>
+                                    <constraint firstItem="zzo-Ez-TA5" firstAttribute="leading" secondItem="bFR-9n-vMH" secondAttribute="leading" constant="33" id="gzl-BG-Nt7"/>
+                                    <constraint firstItem="zK0-6j-NGA" firstAttribute="centerX" secondItem="zzo-Ez-TA5" secondAttribute="centerX" id="iOi-RO-Ul7"/>
+                                    <constraint firstItem="zK0-6j-NGA" firstAttribute="leading" secondItem="bFR-9n-vMH" secondAttribute="leading" constant="40" id="nA7-JU-Qpq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.8232520517676768" green="0.8232520517676768" blue="0.8232520517676768" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bFR-9n-vMH" firstAttribute="leading" secondItem="xeS-RM-tUs" secondAttribute="leading" constant="150" id="29e-BX-SSu"/>
+                            <constraint firstItem="bFR-9n-vMH" firstAttribute="top" secondItem="Rzo-a9-elU" secondAttribute="bottom" constant="22" id="6OS-Ef-hGq"/>
+                            <constraint firstItem="YE6-d1-ygg" firstAttribute="top" secondItem="bFR-9n-vMH" secondAttribute="bottom" constant="366" id="S1k-N1-c4r"/>
+                            <constraint firstItem="bFR-9n-vMH" firstAttribute="centerX" secondItem="xeS-RM-tUs" secondAttribute="centerX" id="Ydy-y3-by2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preferences" image="clip_clip_small" id="UvN-tT-LPg"/>
                 </viewController>
@@ -212,14 +251,66 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxi-2E-vRP">
+                                <rect key="frame" x="150" y="450" width="300" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wdG-h4-53X">
+                                        <rect key="frame" x="8" y="5" width="79" height="30"/>
+                                        <state key="normal" title="Step Thru">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnTick:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="rcw-Gz-ypt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYI-ov-eVK">
+                                        <rect key="frame" x="95" y="5" width="79" height="30"/>
+                                        <state key="normal" title="Complete">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnComplete:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="sRW-IN-YaR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oJ-ix-nfb">
+                                        <rect key="frame" x="246" y="5" width="46" height="30"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btnReset:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pex-XM-pYL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.91668639520202022" green="0.91668639520202022" blue="0.91668639520202022" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADO-fa-NKJ">
+                                <rect key="frame" x="150" y="57" width="300" height="300"/>
+                                <color key="backgroundColor" red="0.70456518308080807" green="0.38350745989131957" blue="0.13119291627628957" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ADO-fa-NKJ" secondAttribute="height" multiplier="1:1" id="i59-Jp-phV"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.074520404706404475" green="0.076222850208971779" blue="0.15342881944444442" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ADO-fa-NKJ" secondAttribute="centerX" id="BTb-2E-1Dr"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
+                            <constraint firstItem="ADO-fa-NKJ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="37" id="EYo-Az-RlL"/>
+                            <constraint firstItem="ADO-fa-NKJ" firstAttribute="leading" secondItem="Cxi-2E-vRP" secondAttribute="leading" id="Fjv-Wd-fd5"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstItem="Cxi-2E-vRP" firstAttribute="top" secondItem="ADO-fa-NKJ" secondAttribute="bottom" constant="93" id="RuX-Jc-Kcr"/>
+                            <constraint firstItem="ADO-fa-NKJ" firstAttribute="trailing" secondItem="Cxi-2E-vRP" secondAttribute="trailing" id="fy5-Xt-lVY"/>
+                            <constraint firstAttribute="bottom" secondItem="ADO-fa-NKJ" secondAttribute="bottom" constant="243" id="lqZ-kf-uWm"/>
+                            <constraint firstAttribute="centerY" secondItem="ADO-fa-NKJ" secondAttribute="centerY" constant="-100" id="pij-mG-eLr"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="pij-mG-eLr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulate" image="rover_image_small" id="cPa-gy-q4n"/>
                 </viewController>

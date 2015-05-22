@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface SimulationViewController : UIViewController
+- (IBAction)btnTick:(id)sender;
+- (IBAction)btnComplete:(id)sender;
+- (IBAction)btnReset:(id)sender;
 
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface InputViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+- (IBAction)btnAdd:(id)sender;
 
 
 @end

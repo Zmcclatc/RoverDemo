@@ -18,15 +18,15 @@
 //Updating moves and initializing a grid are all possible.
 @protocol GridProtocol
 @required
-+(NSObject*)init;
+-(id)init;
 //Input an attempted move.
-+(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
+-(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
 //Return
-+(bool)checkValidMove:(Rover*)rover;
+-(bool)checkValidMove:(Rover*)rover;
 
 
 @optional
-+(NSObject*)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
+-(id)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
 
 @end
 
@@ -39,5 +39,17 @@
 +(void)tick;
 //Alternately, the entire simulator can be run at once - basically this Ticks until all Rovers have returned 'can't move' or 'out of moves'.
 +(void)compute;
+
++(void)resetPositions;
+
++(int)numberOfRovers;
+
++(int)getRover:(int)roverIndex;
+
++(void)updateGridWidth:(int)width andHeight:(int)height;
+
++(int)getGridWidth;
+
++(int)getGridHeight;
 
 @end
