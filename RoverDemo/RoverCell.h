@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rover.h"
 
 @interface RoverCell : UITableViewCell
+@property (strong,nonatomic) Rover* myRover;
 @property (weak, nonatomic) IBOutlet UITextField *txtStartingLoc;
 @property (weak, nonatomic) IBOutlet UITextField *txtEndingLoc;
 - (IBAction)txtStartLocChanged:(id)sender;

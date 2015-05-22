@@ -55,10 +55,11 @@ Simulator* mySim;
     Rover* myRover=[mySim getRover:(int)indexPath.row];
     myCell.txtEndingLoc.text=[myRover getMoveset];
     myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i,%i,%@",myRover.XCoord,myRover.YCoord,[myRover getFacing]];
+    myCell.roverIndex=(int)indexPath.row;
     
     return myCell;
 }
-
+//Standard table setup function.
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [mySim numberOfRovers];
@@ -74,12 +75,38 @@ Simulator* mySim;
     [textField resignFirstResponder];	
     return true;
 }
-
-- (IBAction)btnUpdateSimulation:(id)sender {
-}
+//When the grid width changes, we need to update all rovers to ensure they start inside. We also need to make certain the given input is actually within
 - (IBAction)txtGridWidthChanged:(id)sender {
+    int testWidth=[self.txtGridWidth.text intValue];
+    if (testWidth<=0 || testWidth>20)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input sanitization issue"
+                                                        message:@"Please enter a grid width between 0 and 20"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        testWidth=[mySim getGridWidth];
+        self.txtGridWidth.text=[NSString stringWithFormat:@"%i",testWidth];
+        [alert show];
+        return;
+    }
+    [mySim updateGridWidth: testWidth andHeight:[mySim getGridHeight]];
 }
 
 - (IBAction)txtHeightChanged:(id)sender {
+    int testHeight=[self.txtGridHeight.text intValue];
+    if (testHeight<=0 || testHeight>20)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input sanitization issue"
+                                                        message:@"Please enter a grid height between 0 and 20"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        testHeight=[mySim getGridHeight];
+        self.txtGridHeight.text=[NSString stringWithFormat:@"%i",testHeight];
+        [alert show];
+        return;
+    }
+    [mySim updateGridWidth: [mySim getGridWidth] andHeight: testHeight];
 }
 @end
