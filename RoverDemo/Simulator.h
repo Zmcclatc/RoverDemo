@@ -35,6 +35,7 @@
 
 @interface Simulator : NSObject
 
+
 +(id)getSimulation;
 
 
@@ -48,6 +49,12 @@
 -(int)numberOfRovers;
 //So we can get the details of said rover. Potentially later we can expand this to use a delegate and any number of types of object in the grid.
 -(Rover*)getRover:(int)roverIndex;
+
+//Commands for adding and deleting rovers. Used by the input screen.
+-(Rover*)addRover;
+-(Rover*)addRoverAtX:(int)XCoord andY:(int)YCoord withMoveSet:(NSString*)moveset andFacing:(NSString*)facing;
+-(void)removeRover:(int)roverIndex;
+
 //Since the grid is 'part of' the simulation, we're updating it with a passthrough.
 -(void)updateGridWidth:(int)width andHeight:(int)height;
 //Getter methods for controlling input and the visual side of the simulation.

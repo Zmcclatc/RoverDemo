@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RoverCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UITextField *txtStartingLoc;
+@property (weak, nonatomic) IBOutlet UITextField *txtEndingLoc;
+- (IBAction)txtStartLocChanged:(id)sender;
+- (IBAction)txtEndLocChanged:(id)sender;
 
 @end

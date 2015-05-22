@@ -12,6 +12,7 @@
 - (IBAction)btnTick:(id)sender;
 - (IBAction)btnComplete:(id)sender;
 - (IBAction)btnReset:(id)sender;
+@property (weak, nonatomic) IBOutlet UIView *viewDisplay;
 
 
 @end

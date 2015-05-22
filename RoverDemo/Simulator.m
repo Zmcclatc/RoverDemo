@@ -12,7 +12,7 @@
 @implementation Simulator
 
 id <GridProtocol> myGrid;
-NSArray* myRovers;
+NSMutableArray* myRovers;
 
 //Bog-standard singleton code. We only ever need one simulator, as we've designed it to be resilient and mutable.
 +(id)getSimulation
@@ -79,7 +79,10 @@ NSArray* myRovers;
  */
 -(void)updateGridWidth:(int)width andHeight:(int)height
 {
-    myGrid= [[Grid alloc]initWithWidth:width andHeight:height];
+    if ([Grid respondsToSelector:@selector(initWithWidth:andHeight:)])
+    {
+        myGrid= [[Grid alloc]initWithWidth:width andHeight:height];
+    }
 }
 //Getter methods for controlling input and the visual side of the simulation.
 -(int)getGridWidth
@@ -90,6 +93,21 @@ NSArray* myRovers;
 {
     return [myGrid getHeight];
 }
-
+//Two options to add rovers - either with a known set of coordinates or with a default setting (eg via the addRover button).
+-(Rover*)addRoverAtX:(int)XCoord andY:(int)YCoord withMoveSet:(NSString*)moveset andFacing:(NSString*)facing
+{
+    Rover* newRover=[[Rover alloc]initWithXCoord:XCoord andYcoord:YCoord andMoveSet:moveset andFacing:facing];
+    [myRovers addObject:newRover];
+    return newRover;
+}
+-(Rover*)addRover
+{
+    //Do a basic attempt not to overlap. Take the incremented rover count as an index into the grid itself.
+    int newXCoord=myRovers.count % [myGrid getWidth];
+    int newYCoord=(myRovers.count / [myGrid getWidth]) % [myGrid getHeight];
+    Rover* newRover=[[Rover alloc]initWithXCoord:newXCoord andYcoord:newYCoord andMoveSet:@"" andFacing:@"N"];
+    [myRovers addObject:newRover];
+    return newRover;
+}
 
 @end
