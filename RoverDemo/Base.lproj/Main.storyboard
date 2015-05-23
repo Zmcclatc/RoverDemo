@@ -65,7 +65,7 @@
                                             <outlet property="delegate" destination="9pv-A4-QxB" id="Wzh-sq-lsq"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="6" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UrD-cB-pi0">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6" borderStyle="roundedRect" placeholder="6" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UrD-cB-pi0">
                                         <rect key="frame" x="155" y="16" width="45" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>

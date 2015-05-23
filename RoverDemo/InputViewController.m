@@ -61,7 +61,7 @@ Simulator* mySim;
     
     return myCell;
 }
-//Standard table setup function.
+//Standard table setup and visual dimensions functions.
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [mySim numberOfRovers];
@@ -87,7 +87,7 @@ Simulator* mySim;
     if (testWidth<=0 || testWidth>20)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input sanitization issue"
-                                                        message:@"Please enter a grid width between 0 and 20"
+                                                        message:@"Please enter a grid width between 1 and 20"
                                                        delegate:self
                                               cancelButtonTitle:@"Ok"
                                               otherButtonTitles:nil];
@@ -96,7 +96,9 @@ Simulator* mySim;
         [alert show];
         return;
     }
-    [mySim updateGridWidth: testWidth andHeight:[mySim getGridHeight]];
+    //Right now the grid is slaved to a square shape. But we have support for other dimensions. In the meantime, copy the width to the height box.
+    [mySim updateGridWidth: testWidth andHeight:testWidth];
+    self.txtGridHeight.text=self.txtGridWidth.text;
 }
 
 - (IBAction)txtHeightChanged:(id)sender {
@@ -104,7 +106,7 @@ Simulator* mySim;
     if (testHeight<=0 || testHeight>20)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Input sanitization issue"
-                                                        message:@"Please enter a grid height between 0 and 20"
+                                                        message:@"Please enter a grid height between 1 and 20"
                                                        delegate:self
                                               cancelButtonTitle:@"Ok"
                                               otherButtonTitles:nil];
