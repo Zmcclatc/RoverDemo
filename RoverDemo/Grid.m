@@ -9,7 +9,9 @@
 #import "Grid.h"
 
 @implementation Grid
+{
     NSMutableDictionary* roverList;//We need access to the positions of all rovers we've dealt with in order to handle collisions.
+}
 @synthesize width;
 @synthesize height;
 -(id<GridProtocol>)init

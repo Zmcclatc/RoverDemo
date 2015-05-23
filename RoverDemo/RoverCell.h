@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "Rover.h"
+#import "Simulator.h"
 
 @interface RoverCell : UITableViewCell
-@property (strong,nonatomic) Rover* myRover;
+@property int roverIndex;
 @property (weak, nonatomic) IBOutlet UITextField *txtStartingLoc;
 @property (weak, nonatomic) IBOutlet UITextField *txtEndingLoc;
 - (IBAction)txtStartLocChanged:(id)sender;

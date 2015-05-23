@@ -16,7 +16,7 @@
 
 //This protocol defines how the Simulator can interact with the grid.
 //Updating moves and initializing a grid are all possible.
-@protocol GridProtocol
+@protocol GridProtocol <NSObject>
 @required
 -(id)init;
 //Input an attempted move.

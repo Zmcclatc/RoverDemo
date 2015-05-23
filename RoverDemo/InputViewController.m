@@ -15,9 +15,10 @@
 
 @end
 
-@implementation InputViewController
+@implementation InputViewController {
 
-Simulator* mySim;
+    Simulator* mySim;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,8 +65,8 @@ Simulator* mySim;
     RoverCell* myCell=[tableView dequeueReusableCellWithIdentifier:@"RoverCell"];
     Rover* myRover=[mySim getRover:(int)indexPath.row];
     myCell.txtEndingLoc.text=[myRover getMoveset];
-    myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",myRover.XCoord,myRover.YCoord,[myRover getFacing]];
-    myCell.myRover=[mySim getRover:(int)indexPath.row];
+    myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",[myRover getStartX],[myRover getStartY],[myRover getFacing]];
+    myCell.roverIndex=(int)indexPath.row;
     
     return myCell;
 }
@@ -107,7 +108,8 @@ Simulator* mySim;
     }
     //Right now the grid is slaved to a square shape. But we have support for other dimensions. In the meantime, copy the width to the height box.
     [mySim updateGridWidth: testWidth andHeight:testWidth];
-    self.txtGridHeight.text=self.txtGridWidth.text;
+    self.txtGridHeight.text=[NSString stringWithFormat:@"%i",testWidth];
+    self.txtGridWidth.text=[NSString stringWithFormat:@"%i",testWidth];
 }
 
 /*
@@ -128,5 +130,6 @@ Simulator* mySim;
         return;
     }
     [mySim updateGridWidth: [mySim getGridWidth] andHeight: testHeight];
+    self.txtGridHeight.text=[NSString stringWithFormat:@"%i",testHeight];
 }
 @end

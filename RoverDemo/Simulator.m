@@ -9,10 +9,11 @@
 #import "Simulator.h"
 #import "Grid.h"
 
-@implementation Simulator
+@implementation Simulator {
 
-id <GridProtocol> myGrid;
-NSMutableArray* myRovers;
+    id <GridProtocol> myGrid;
+    NSMutableArray* myRovers;
+}
 
 //Bog-standard singleton code. We only ever need one simulator, as we've designed it to be resilient and mutable.
 +(id)getSimulation
@@ -51,7 +52,10 @@ NSMutableArray* myRovers;
 //This is used to clear the board and run again, or before returning to the sim view.
 -(void)resetPositions
 {
-    
+    for(Rover* rover in myRovers)
+    {
+        [rover reset];
+    }
 }
 //For setup tableview purposes.
 -(int)numberOfRovers
@@ -79,7 +83,7 @@ NSMutableArray* myRovers;
  */
 -(void)updateGridWidth:(int)width andHeight:(int)height
 {
-    if ([Grid respondsToSelector:@selector(initWithWidth:andHeight:)])
+    if ([myGrid respondsToSelector:@selector(initWithWidth:andHeight:)])
     {
         myGrid= [[Grid alloc]initWithWidth:width andHeight:height];
     }

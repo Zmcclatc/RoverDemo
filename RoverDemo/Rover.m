@@ -8,15 +8,16 @@
 
 #import "Rover.h"
 
-@implementation Rover
+@implementation Rover {
 
- int XCoord;
- int YCoord;
- int startXCoord;
- int startYCoord;
+    int XCoord;
+    int YCoord;
+    int startXCoord;
+    int startYCoord;
 
-int currentMove;
-NSString* currentDir;
+    int currentMove;
+    NSString* currentDir;
+}
 /*
  Initialize a rover with a given xcoord, ycoord, moveset, and facing direction.
  */

@@ -19,6 +19,8 @@
 //Getters so the simulator can check against the grid.
 -(int)getNextX;
 -(int)getNextY;
+-(int)getStartX;
+-(int)getStartY;
 //Either commit or discard the next move.
 -(void)move;
 -(void)discardMove;
