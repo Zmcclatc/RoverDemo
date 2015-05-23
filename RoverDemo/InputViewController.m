@@ -45,8 +45,9 @@ Simulator* mySim;
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [mySim removeRover:(int)indexPath.row];
-        [tableView reloadData];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+    [tableView endUpdates];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,6 +69,10 @@ Simulator* mySim;
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80.0;
 }
 
 

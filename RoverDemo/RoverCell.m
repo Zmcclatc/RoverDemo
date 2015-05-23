@@ -31,7 +31,7 @@
     {
         
         NSLog(@"Something broke in the regex in RoverCell! Fix it, dummy!");
-        self.txtStartingLoc.text=[NSString stringWithFormat:@"%i,%i,%@",self.myRover.XCoord,self.myRover.YCoord,[self.myRover getFacing]];
+        self.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",self.myRover.XCoord,self.myRover.YCoord,[self.myRover getFacing]];
         return;
     }
     //Check the data against the regex. We need to make sure it matches so we'll check that the string has
@@ -46,7 +46,7 @@
                                               cancelButtonTitle:@"Ok"
                                               otherButtonTitles:nil];
         
-        self.txtStartingLoc.text=[NSString stringWithFormat:@"%i,%i,%@",self.myRover.XCoord,self.myRover.YCoord,[self.myRover getFacing]];
+        self.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",self.myRover.XCoord,self.myRover.YCoord,[self.myRover getFacing]];
         [alert show];
     }
     else {
@@ -54,7 +54,7 @@
         NSString* baseString=[self.txtStartingLoc.text substringWithRange:firstMatch];
         NSArray* inputComponents=[baseString componentsSeparatedByString:@":"];
         [self.myRover setXCoord:[inputComponents[0] intValue]];
-        [self.myRover setXCoord:[inputComponents[1] intValue]];
+        [self.myRover setYCoord:[inputComponents[1] intValue]];
         [self.myRover setFacingDir:inputComponents[2]];
     }
     
