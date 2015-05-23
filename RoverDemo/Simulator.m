@@ -93,13 +93,22 @@ NSMutableArray* myRovers;
 {
     return [myGrid getHeight];
 }
-//Two options to add rovers - either with a known set of coordinates or with a default setting (eg via the addRover button).
+/*
+ Two options to add rovers - either with a known set of coordinates or with a default setting (eg via the addRover button). This option is more useful for testing.
+    Parameters: XCoord - the x location of the new rover.
+                YCoord - the y location of the new rover.
+                moveset - a series of moves for the rover to follow, in F/L/R format.
+                facing - the direction the rover starts out in. N/S/E/W.
+ */
 -(Rover*)addRoverAtX:(int)XCoord andY:(int)YCoord withMoveSet:(NSString*)moveset andFacing:(NSString*)facing
 {
     Rover* newRover=[[Rover alloc]initWithXCoord:XCoord andYcoord:YCoord andMoveSet:moveset andFacing:facing];
     [myRovers addObject:newRover];
     return newRover;
 }
+/*
+ Add a rover with a default orientation and incremented location.
+ */
 -(Rover*)addRover
 {
     //Do a basic attempt not to overlap. Take the incremented rover count as an index into the grid itself.
@@ -109,9 +118,13 @@ NSMutableArray* myRovers;
     [myRovers addObject:newRover];
     return newRover;
 }
+/*
+ Remove the rover at the given index, if applicable. Otherwise throw a funny warning.
+    Parameters: roverIndex - the array index to remove a rover from. 
+ */
 -(void)removeRover:(int)roverIndex
 {
-    if (roverIndex>=myRovers.count)
+    if (roverIndex>=myRovers.count || roverIndex<0)
     {
         NSLog(@"The impossible has occurred! We tried to remove (roll over) a nonexistent (red) rover!");
         return;

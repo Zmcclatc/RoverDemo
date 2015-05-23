@@ -10,10 +10,7 @@
 
 @interface Rover : NSObject
 
-@property int XCoord;
-@property int YCoord;
-@property int startXCoord;
-@property int startYCoord;
+
 @property (strong) NSString* FacingDir;
 @property (strong) NSString* moveString;
 

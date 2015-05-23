@@ -9,11 +9,17 @@
 #import "Rover.h"
 
 @implementation Rover
-int currentMove;
-int startXCoord;
-int startYCoord;
-NSString* currentDir;
 
+ int XCoord;
+ int YCoord;
+ int startXCoord;
+ int startYCoord;
+
+int currentMove;
+NSString* currentDir;
+/*
+ Initialize a rover with a given xcoord, ycoord, moveset, and facing direction.
+ */
 -(id)initWithXCoord:(int)xcoord andYcoord:(int)ycoord andMoveSet:(NSString*)moveset andFacing:(NSString*)Facing
 {
     self=[super init];
@@ -22,37 +28,45 @@ NSString* currentDir;
     self.FacingDir=Facing;
     return self;
 }
-
+//Both update our xcoord/ycoord and our starting positions. I'm not entirely happy with how these are represented right now, but it'll do until we get into testing.
 -(void)updateXCoord:(int)xcoord andYCoord:(int)ycoord
 {
     
-    self.XCoord=xcoord;
-    startXCoord=self.XCoord;
-    self.YCoord=ycoord;
-    startYCoord=self.YCoord;
+    XCoord=xcoord;
+    startXCoord=XCoord;
+    YCoord=ycoord;
+    startYCoord=YCoord;
 }
 
-//Getters so the simulator can check against the grid.
+//Getters so the simulator can check against the grid. These are also how the rover figures out where it will be next turn.
 -(int)getNextX
 {
     if ([[self getNextMove] isEqual:@"F"])
     {
-        if ([currentDir isEqual:@"E"]) return self.XCoord+1;
-        if ([currentDir isEqual:@"W"]) return self.XCoord-1;
+        if ([currentDir isEqual:@"E"]) return XCoord+1;
+        if ([currentDir isEqual:@"W"]) return XCoord-1;
     }
-    return self.XCoord;
+    return XCoord;
 }
 -(int)getNextY
 {
     if ([[self getNextMove] isEqual:@"F"])
     {
-        if ([currentDir isEqual:@"S"]) return self.YCoord-1;
-        if ([currentDir isEqual:@"N"]) return self.YCoord+1;
+        if ([currentDir isEqual:@"S"]) return YCoord-1;
+        if ([currentDir isEqual:@"N"]) return YCoord+1;
     }
-    return self.YCoord;
+    return YCoord;
+}
+-(int)getStartX
+{
+    return startXCoord;
+}
+-(int)getStartY
+{
+    return startYCoord;
 }
 /*
- As we opted to keep instructions in string format, we have to interpret what they mean. This is done  by applying a string "Command" to a string "Orientation" (and to the position as well)
+ As we opted to keep instructions in string format, we have to interpret what they mean. This is done  by applying a string "Command" to a string "Orientation" (and to the position as well) "L" and "R" are applied to compass directions here.
  */
 -(NSString*)getNextDir
 {
@@ -70,24 +84,26 @@ NSString* currentDir;
     if ([currentDir isEqual:@"E"]) return @"S";
     return currentDir;
 }
+//Handle the parsing of the move string in a single location.
 -(NSString*)getNextMove
 {
     NSRange nextChar=NSMakeRange(currentMove, currentMove+1);
     return [self.moveString substringWithRange:nextChar];
 }
-//Either commit or discard the next move.
+//Either commit or discard the next move. This applies changes to our rover's state.
 -(void)move
 {
-    self.XCoord=[self getNextX];
-    self.YCoord=[self getNextY];
+    XCoord=[self getNextX];
+    YCoord=[self getNextY];
     currentDir=[self getNextDir];
     currentMove++;
 }
+//Just move on.
 -(void)discardMove
 {
     currentMove++;
 }
-
+//Standard getters.
 -(NSString *)getFacing
 {
     return self.FacingDir;
@@ -99,8 +115,8 @@ NSString* currentDir;
 -(void)reset
 {
     currentMove=0;
-    self.XCoord=self.startXCoord;
-    self.YCoord=self.startYCoord;
+    XCoord=startXCoord;
+    YCoord=startYCoord;
     currentDir=self.FacingDir;
 }
 

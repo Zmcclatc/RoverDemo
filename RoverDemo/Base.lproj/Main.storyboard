@@ -103,6 +103,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="txtEndLocChanged:" destination="KAb-kX-Pn7" eventType="editingDidEnd" id="Tz3-tv-QaX"/>
+                                                        <outlet property="delegate" destination="9pv-A4-QxB" id="b8N-tF-SKw"/>
                                                     </connections>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start X. Y. Dir" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VyP-5p-xH0">
@@ -132,6 +133,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="txtStartLocChanged:" destination="KAb-kX-Pn7" eventType="editingDidEnd" id="reA-Oc-XPW"/>
+                                                        <outlet property="delegate" destination="9pv-A4-QxB" id="hic-nm-cky"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

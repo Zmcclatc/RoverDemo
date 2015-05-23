@@ -31,16 +31,22 @@ Simulator* mySim;
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ Tell the sim we're taking this Opportunity to land an additional Spirit on Mars. Also update the table.
+ */
 - (IBAction)btnAdd:(id)sender {
     [mySim addRover];
     [self.tableView reloadData];
 }
 
-
+//Yeah - just assume we can edit anything we find.
 -(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return true;
 }
+/*
+ Handle row deletion and table updates. This is via the cool slide-out delete button that comes standard on iOS.
+ */
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView beginUpdates];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -49,14 +55,16 @@ Simulator* mySim;
     }
     [tableView endUpdates];
 }
-
+/*
+ Fill out and display our starting cells. They contain an individual rover's x, y, and starting direction.
+ */
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     RoverCell* myCell=[tableView dequeueReusableCellWithIdentifier:@"RoverCell"];
     Rover* myRover=[mySim getRover:(int)indexPath.row];
     myCell.txtEndingLoc.text=[myRover getMoveset];
-    myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i,%i,%@",myRover.XCoord,myRover.YCoord,[myRover getFacing]];
+    myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",myRover.XCoord,myRover.YCoord,[myRover getFacing]];
     myCell.myRover=[mySim getRover:(int)indexPath.row];
     
     return myCell;
@@ -75,13 +83,14 @@ Simulator* mySim;
     return 80.0;
 }
 
-
+//Make the keyboard go away when needed. Woo!
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];	
     return true;
 }
-//When the grid width changes, we need to update all rovers to ensure they start inside. We also need to make certain the given input is actually within
+//When the grid width changes, we need to update all rovers to ensure they start inside. We also need to make certain the given input is actually within reasonable boundaries.
+//For now, this function also updates grid height.
 - (IBAction)txtGridWidthChanged:(id)sender {
     int testWidth=[self.txtGridWidth.text intValue];
     if (testWidth<=0 || testWidth>20)
@@ -101,6 +110,9 @@ Simulator* mySim;
     self.txtGridHeight.text=self.txtGridWidth.text;
 }
 
+/*
+ For now this is nonfunctional. It's here for future-proofing reasons - just in case we want to add rectangular grids in the future.
+ */
 - (IBAction)txtHeightChanged:(id)sender {
     int testHeight=[self.txtGridHeight.text intValue];
     if (testHeight<=0 || testHeight>20)
