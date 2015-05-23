@@ -12,6 +12,8 @@
 
 @property int XCoord;
 @property int YCoord;
+@property int startXCoord;
+@property int startYCoord;
 @property (strong) NSString* FacingDir;
 @property (strong) NSString* moveString;
 
@@ -26,5 +28,10 @@
 
 -(NSString*)getMoveset;
 -(NSString*)getFacing;
+
+-(void)updateXCoord:(int)xcoord andYCoord:(int)ycoord;
+
+//Reset just returns us to the first move in our moveset.
+-(void)reset;
 
 @end

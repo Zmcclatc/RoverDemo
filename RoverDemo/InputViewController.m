@@ -33,6 +33,7 @@ Simulator* mySim;
 
 - (IBAction)btnAdd:(id)sender {
     [mySim addRover];
+    [self.tableView reloadData];
 }
 
 
@@ -55,7 +56,7 @@ Simulator* mySim;
     Rover* myRover=[mySim getRover:(int)indexPath.row];
     myCell.txtEndingLoc.text=[myRover getMoveset];
     myCell.txtStartingLoc.text=[NSString stringWithFormat:@"%i,%i,%@",myRover.XCoord,myRover.YCoord,[myRover getFacing]];
-    myCell.roverIndex=(int)indexPath.row;
+    myCell.myRover=[mySim getRover:(int)indexPath.row];
     
     return myCell;
 }

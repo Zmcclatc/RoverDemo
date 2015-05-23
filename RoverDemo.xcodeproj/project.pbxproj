@@ -406,6 +406,7 @@
 				INFOPLIST_FILE = RoverDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -416,6 +417,7 @@
 				INFOPLIST_FILE = RoverDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -472,6 +474,7 @@
 				CE3587721B0E907C00B58324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE3587731B0E907C00B58324 /* Build configuration list for PBXNativeTarget "RoverDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +483,7 @@
 				CE3587751B0E907C00B58324 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

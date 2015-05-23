@@ -109,5 +109,14 @@ NSMutableArray* myRovers;
     [myRovers addObject:newRover];
     return newRover;
 }
+-(void)removeRover:(int)roverIndex
+{
+    if (roverIndex>=myRovers.count)
+    {
+        NSLog(@"The impossible has occurred! We tried to remove (roll over) a nonexistent (red) rover!");
+        return;
+    }
+    [myRovers removeObjectAtIndex:roverIndex];
+}
 
 @end

@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtGridWidth;
 - (IBAction)txtGridWidthChanged:(id)sender;
 - (IBAction)txtHeightChanged:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
 @end
