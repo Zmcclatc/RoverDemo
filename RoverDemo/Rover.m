@@ -66,6 +66,14 @@
 {
     return startYCoord;
 }
+-(int)getCurrentX
+{
+    return XCoord;
+}
+-(int)getCurrentY
+{
+    return YCoord;
+}
 /*
  As we opted to keep instructions in string format, we have to interpret what they mean. This is done  by applying a string "Command" to a string "Orientation" (and to the position as well) "L" and "R" are applied to compass directions here.
  */

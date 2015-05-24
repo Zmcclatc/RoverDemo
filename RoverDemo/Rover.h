@@ -21,6 +21,8 @@
 -(int)getNextY;
 -(int)getStartX;
 -(int)getStartY;
+-(int)getCurrentX;
+-(int)getCurrentY;
 //Either commit or discard the next move.
 -(void)move;
 -(void)discardMove;
