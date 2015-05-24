@@ -25,6 +25,7 @@ Simulator* mySim;
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [mySim resetPositions];
     [self makeView];
 }
 
@@ -70,12 +71,13 @@ Simulator* mySim;
         Rover* rover=[mySim getRover:iter];
         UIImageView* newView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rover_image_small"]];
         [newView setFrame:CGRectMake([rover getCurrentX]*tileSizeX, [rover getCurrentY]*tileSizeY, tileSizeX, tileSizeY)];
-        [newView setTransform:CGAffineTransformMakeRotation([rover getAngle])];
         [self.viewDisplay addSubview:newView];
+        newView.transform=CGAffineTransformMakeRotation([rover getAngle]);
     }
 }
 
 - (IBAction)btnReset:(id)sender {
     [mySim resetPositions];
+    [self makeView];
 }
 @end

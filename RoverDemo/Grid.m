@@ -14,6 +14,7 @@
 {
     NSMutableSet* roverList;//We need access to the validities of all rovers we've dealt with in order to handle collisions.
     NSMutableArray* roverLocList;//We also need a secondary array to keep track of interdicted positions. This is easier and much more efficient than checking all rovers each time.
+    NSMutableArray* oldLocList;//Finally, we need to keep track of where rovers were. This handles the single case where rovers try to switch positions.
 }
 @synthesize width;
 @synthesize height;
@@ -32,27 +33,49 @@
     height=gridHeight;
     roverList=[[NSMutableSet alloc]init];
     roverLocList=[[NSMutableArray alloc]initWithCapacity:width*height];
+    oldLocList=[[NSMutableArray alloc]initWithCapacity:width*height];
     return self;
 }
 //Input an attempted move.
 -(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover
 {
-    //Don't let us move outside the bounds of the world.
+    /*
+     First, check if we're outside the bounds of the world. If we are,
+     we want to return - but not before invalidating anything that tried to move to our old position, and updating the list of old locations.
+    */
     if (newX<0 || newY<0 || newX>=width || newY>=height) {
         int oldX=[rover getCurrentX];
         int oldY=[rover getCurrentY];
+        oldLocList[oldX*width+oldY]=rover;
         [self invalidate:oldX andY:oldY forRover:rover withOriginalRover:rover];
         return; //Don't move.
     }
     int locEntryPoint=newX*width+newY;
-    if (![[roverLocList objectAtIndex:locEntryPoint] isEqual:@0]) //invalid entry point! We're trying to move to the same spot someone else is in!
+    /*
+     Special case: The rover at our old position used to be in our new one. 
+     We don't want to let rovers pass unseen in the night, so let's invalidate.
+     */
+    if (oldLocList[locEntryPoint]==roverLocList[[rover getCurrentX]*width+[rover getCurrentY]])
+    {
+        [self invalidate:[rover getCurrentX] andY:[rover getCurrentY] forRover:oldLocList[locEntryPoint] withOriginalRover:rover];
+    }
+    /*
+     Standard issue: We're attempting to move to a position already occupied by an impetuous virtual hunk of metal and silicon. Stop, and tell them to stop too.
+     */
+    if (![[roverLocList objectAtIndex:locEntryPoint] isEqual:@0])
     {
         [self invalidate:newX andY:newY forRover:roverLocList[locEntryPoint] withOriginalRover:rover];
+        oldLocList[[rover getCurrentX]*width+[rover getCurrentY]]=rover;
+        return;
     }
-    else {
-        roverLocList[locEntryPoint]=rover;
-        [roverList addObject:rover];
-    }
+    
+    /*
+     If none of the above applied, we're all systems go for attempting to move.
+     Of course, we need to understand when we do this that we may be booted back in the future.
+     */
+    oldLocList[[rover getCurrentX]*width+[rover getCurrentY]]=rover;
+    roverLocList[locEntryPoint]=rover;
+    [roverList addObject:rover];
 }
 //A recursive function to clear out impossible moves. If somebody moves into a rover down the road, anything trying to move in turn must stop.
 -(void)invalidate:(int)X andY:(int)Y forRover:(Rover*)rover withOriginalRover:(Rover*)original
@@ -61,7 +84,7 @@
     int oldY=[rover getCurrentY];
     int locEntryPoint=oldX*width+oldY;
     //Move prior occupants out of the way.
-    if (roverLocList[locEntryPoint]==original) //We've entered a loop somehow. Break out and just say nobody moves.
+    if (roverLocList[locEntryPoint]==original || roverLocList[locEntryPoint]==rover) //We've entered a loop somehow. Break out and just say nobody moves.
     {
         return;
     }

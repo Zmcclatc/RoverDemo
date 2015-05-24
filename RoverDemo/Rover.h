@@ -26,7 +26,7 @@
 //Either commit or discard the next move.
 -(bool)move;
 -(BOOL)discardMove;
-//Convert our direction to a degree.
+//Convert our direction to a radian.
 -(float)getAngle;
 
 -(NSString*)getMoveset;
