@@ -25,6 +25,8 @@
 -(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
 //Return whether or not the given rover's next move is valid. This is computed over time according to the grid's internal logic.
 -(bool)checkValidMove:(Rover*)rover;
+//Reset the internal data before the next move.
+-(void)resetMoves;
 //Kinda self-explanatory getters.
 -(int)getWidth;
 -(int)getHeight;

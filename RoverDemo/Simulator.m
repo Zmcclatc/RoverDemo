@@ -39,15 +39,37 @@
     return self;
 }
 
-//Simulator ticks can be triggered individually if need be.
--(void)tick
+//Simulator ticks can be triggered individually if need be. Returns whether or not any moves remain.
+-(bool)tick
 {
-    
+    bool movesLeft=false;
+    [myGrid resetMoves];//Call before every tick.
+    for(Rover* rover in myRovers)
+    {
+        //Attempt to place a rover on the board at its next location.
+        [myGrid attemptMoveToX:[rover getNextX] andY:[rover getNextY] forRover:rover];
+    }
+    //Now run through all the rovers and move the ones who can move.
+    for(Rover* rover in myRovers)
+    {
+        //If this returns true, the rover in question can move.
+        if ([myGrid checkValidMove:rover])
+        {
+            //Simple and easy one-line check to 'and' together all the outcomes to the rovers' moves.
+            movesLeft=[rover move]?true:movesLeft;
+        }
+        else {
+            //Simple and easy one-line check to 'and' together all the outcomes to the rovers' moves.
+            movesLeft=[rover discardMove]?true:movesLeft;
+        }
+    }
+    return movesLeft;
 }
 //Alternately, the entire simulator can be run at once - basically this Ticks until all Rovers have returned 'can't move' or 'out of moves'.
 -(void)compute
 {
-    
+    //Move until you can't move no more. This one's almost trivial - the condition is also the loop.
+    while ([self tick]);
 }
 //This is used to clear the board and run again, or before returning to the sim view.
 -(void)resetPositions
@@ -56,6 +78,7 @@
     {
         [rover reset];
     }
+    [myGrid resetMoves];
 }
 //For setup tableview purposes.
 -(int)numberOfRovers

@@ -97,20 +97,25 @@
 -(NSString*)getNextMove
 {
     NSRange nextChar=NSMakeRange(currentMove, currentMove+1);
+    if (currentMove>=self.moveString.length) return nil;
     return [self.moveString substringWithRange:nextChar];
 }
 //Either commit or discard the next move. This applies changes to our rover's state.
--(void)move
+-(bool)move
 {
     XCoord=[self getNextX];
     YCoord=[self getNextY];
     currentDir=[self getNextDir];
     currentMove++;
+    if ([[self getNextMove] isEqual: nil]) return false;
+    return true;
 }
 //Just move on.
--(void)discardMove
+-(bool)discardMove
 {
     currentMove++;
+    if ([[self getNextMove] isEqual: nil]) return false;
+    return true;
 }
 //Standard getters.
 -(NSString *)getFacing

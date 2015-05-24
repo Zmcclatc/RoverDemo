@@ -24,8 +24,8 @@
 -(int)getCurrentX;
 -(int)getCurrentY;
 //Either commit or discard the next move.
--(void)move;
--(void)discardMove;
+-(bool)move;
+-(BOOL)discardMove;
 
 -(NSString*)getMoveset;
 -(NSString*)getFacing;

@@ -23,7 +23,7 @@
 -(void)attemptMoveToX:(int)newX andY:(int)newY forRover:(Rover*)rover;
 //Return whether or not the given rover has a valid move.
 -(bool)checkValidMove:(Rover*)rover;
-
+-(void)resetMoves;
 -(int)getWidth;
 -(int)getHeight;
 
@@ -40,7 +40,7 @@
 
 
 //Simulator ticks can be triggered individually if need be.
--(void)tick;
+-(bool)tick;
 //Alternately, the entire simulator can be run at once - basically this Ticks until all Rovers have returned 'can't move' or 'out of moves'.
 -(void)compute;
 //This is used to clear the board and run again, or before returning to the sim view.

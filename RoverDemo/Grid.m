@@ -51,7 +51,7 @@
     }
     else {
         roverLocList[locEntryPoint]=rover;
-        
+        [roverList addObject:rover];
     }
 }
 //A recursive function to clear out impossible moves. If somebody moves into a rover down the road, anything trying to move in turn must stop.
@@ -72,10 +72,18 @@
     roverLocList[locEntryPoint]=rover;
     [roverList removeObject:rover];
 }
-//Return
+//Return whether or not there's a valid move available 
 -(bool)checkValidMove:(Rover*)rover
 {
-    return true;
+    if ([roverList member:rover]==rover) return true;
+    return false;
+}
+//Clear out all our internal stuff - the list and array both.
+-(void)resetMoves
+{
+    
+    roverList=[[NSMutableSet alloc]init];
+    roverLocList=[[NSMutableArray alloc]initWithCapacity:width*height];
 }
 
 -(int)getHeight

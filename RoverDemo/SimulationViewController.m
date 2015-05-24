@@ -7,6 +7,7 @@
 //
 
 #import "SimulationViewController.h"
+#import "Simulator.h"
 
 @interface SimulationViewController ()
 
@@ -14,8 +15,11 @@
 
 @implementation SimulationViewController
 
+Simulator* mySim;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    mySim=[Simulator getSimulation];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -25,11 +29,14 @@
 }
 
 - (IBAction)btnTick:(id)sender {
+    [mySim tick];
 }
 
 - (IBAction)btnComplete:(id)sender {
+    [mySim compute];
 }
 
 - (IBAction)btnReset:(id)sender {
+    [mySim resetPositions];
 }
 @end
