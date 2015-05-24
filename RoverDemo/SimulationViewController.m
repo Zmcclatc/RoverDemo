@@ -70,6 +70,7 @@ Simulator* mySim;
         Rover* rover=[mySim getRover:iter];
         UIImageView* newView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"rover_image_small"]];
         [newView setFrame:CGRectMake([rover getCurrentX]*tileSizeX, [rover getCurrentY]*tileSizeY, tileSizeX, tileSizeY)];
+        [newView setTransform:CGAffineTransformMakeRotation([rover getAngle])];
         [self.viewDisplay addSubview:newView];
     }
 }

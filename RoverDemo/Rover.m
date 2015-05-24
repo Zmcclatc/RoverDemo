@@ -26,6 +26,7 @@
     self=[super init];
     [self updateXCoord:xcoord andYCoord:ycoord];
     self.moveString=moveset;
+    currentMove=0;
     self.FacingDir=Facing;
     return self;
 }
@@ -97,7 +98,10 @@
 -(NSString*)getNextMove
 {
     NSRange nextChar=NSMakeRange(currentMove, currentMove+1);
-    if (currentMove>=self.moveString.length) return nil;
+    if (currentMove>=self.moveString.length || self.moveString==nil)
+    {
+        return @"";
+    }
     return [self.moveString substringWithRange:nextChar];
 }
 //Either commit or discard the next move. This applies changes to our rover's state.
@@ -106,18 +110,26 @@
     XCoord=[self getNextX];
     YCoord=[self getNextY];
     currentDir=[self getNextDir];
-    currentMove++;
-    if ([[self getNextMove] isEqual: nil]) return false;
+    currentMove=currentMove+1;
+    if ([[self getNextMove] isEqual: @""]) return false;
     return true;
 }
 //Just move on.
 -(bool)discardMove
 {
-    currentMove++;
-    if ([[self getNextMove] isEqual: nil]) return false;
+    currentMove=currentMove+1;
+    if ([[self getNextMove] isEqual: @""]) return false;
     return true;
 }
 //Standard getters.
+
+-(float)getAngle
+{
+    if ([currentDir isEqual:@"N"])return 0;
+    if ([currentDir isEqual:@"E"])return 90;
+    if ([currentDir isEqual:@"S"])return 180;
+    return 270;
+}
 -(NSString *)getFacing
 {
     return self.FacingDir;

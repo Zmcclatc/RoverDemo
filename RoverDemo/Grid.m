@@ -45,7 +45,7 @@
         return; //Don't move.
     }
     int locEntryPoint=newX*width+newY;
-    if (roverLocList[locEntryPoint]!=nil) //invalid entry point! We're trying to move to the same spot someone else is in!
+    if (![[roverLocList objectAtIndex:locEntryPoint] isEqual:@0]) //invalid entry point! We're trying to move to the same spot someone else is in!
     {
         [self invalidate:newX andY:newY forRover:roverLocList[locEntryPoint] withOriginalRover:rover];
     }
@@ -65,7 +65,7 @@
     {
         return;
     }
-    if (roverLocList[locEntryPoint]!=nil)
+    if (![[roverLocList objectAtIndex:locEntryPoint] isEqual:@0])
     {
         [self invalidate:oldX andY:oldY forRover:roverLocList[locEntryPoint] withOriginalRover: original];
     }
@@ -84,6 +84,10 @@
     
     roverList=[[NSMutableSet alloc]init];
     roverLocList=[[NSMutableArray alloc]initWithCapacity:width*height];
+    for(int x=0;x<width*height;x++)
+    {
+        roverLocList[x]=@0;
+    }
 }
 
 -(int)getHeight
