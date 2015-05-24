@@ -36,8 +36,20 @@
  Tell the sim we're taking this Opportunity to land an additional Spirit on Mars. Also update the table.
  */
 - (IBAction)btnAdd:(id)sender {
-    [mySim addRover];
-    [self.tableView reloadData];
+    //Don't let the user add more rovers than can actually fit on the board.
+    if ([mySim numberOfRovers]<([mySim getGridWidth]*[mySim getGridHeight]))
+    {
+        [mySim addRover];
+        [self.tableView reloadData];
+    }
+    else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Too many rovers!"
+                                                        message:@"Please increase the grid size before adding more rovers."
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 //Yeah - just assume we can edit anything we find.
@@ -110,6 +122,12 @@
     [mySim updateGridWidth: testWidth andHeight:testWidth];
     self.txtGridHeight.text=[NSString stringWithFormat:@"%i",testWidth];
     self.txtGridWidth.text=[NSString stringWithFormat:@"%i",testWidth];
+    //Kill off any extra rovers. This is a hard counter to our issues.
+    for(int iter=testWidth*testWidth;iter<[mySim numberOfRovers];iter++)
+    {
+        [mySim removeRover:iter];
+    }
+    [self.tableView reloadData];
 }
 
 /*

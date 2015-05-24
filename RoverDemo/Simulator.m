@@ -115,9 +115,26 @@
  */
 -(Rover*)addRover
 {
+    int gridSpaces=[myGrid getHeight]*[myGrid getWidth];
+    NSMutableArray* roverInterdictionArray=[[NSMutableArray alloc] initWithCapacity:gridSpaces];
+    //We're doing a more intelligent rover interdiction test now. We go through and fill out an array with
+    //rover locations, then find the first unfilled location in the array to place our rover.
+    int loc;
+    for(loc=0;loc<gridSpaces;loc++)
+    {
+        roverInterdictionArray[loc]=@0;
+    }
+    for(Rover* rover in myRovers)
+    {
+        roverInterdictionArray[[rover getStartY]*[myGrid getWidth]+[rover getStartX]]=@1;
+    }
+    for(loc=0;loc<gridSpaces;loc++)
+    {
+        if ([roverInterdictionArray[loc] isEqual:@0]) break;
+    }
     //Do a basic attempt not to overlap. Take the incremented rover count as an index into the grid itself.
-    int newXCoord=myRovers.count % [myGrid getWidth];
-    int newYCoord=(myRovers.count / [myGrid getWidth]) % [myGrid getHeight];
+    int newXCoord=loc % [myGrid getWidth];
+    int newYCoord=(loc / [myGrid getWidth]) % [myGrid getHeight];
     Rover* newRover=[[Rover alloc]initWithXCoord:newXCoord andYcoord:newYCoord andMoveSet:@"" andFacing:@"N"];
     [myRovers addObject:newRover];
     return newRover;

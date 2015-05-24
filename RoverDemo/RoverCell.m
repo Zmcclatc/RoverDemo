@@ -21,8 +21,8 @@
 }
 
 - (IBAction)txtStartLocChanged:(id)sender {
-    
-    Rover* myRover=[[Simulator getSimulation] getRover:self.roverIndex];
+    Simulator* mySim=[Simulator getSimulation];
+    Rover* myRover=[mySim getRover:self.roverIndex];
     //Make sure (via regular expressions) that we have the right format of input. If not, throw an error. If so, send it to the sim.
     NSError *error = NULL;
     NSRegularExpressionOptions regexOptions = 0;
@@ -52,11 +52,40 @@
         [alert show];
     }
     else {
-        //Otherwise -- UPDATE OUR ROVER WOOT!
         NSString* baseString=[self.txtStartingLoc.text substringWithRange:firstMatch];
         NSArray* inputComponents=[baseString componentsSeparatedByString:@":"];
-        [myRover updateXCoord:[inputComponents[0] intValue] andYCoord:[inputComponents[1] intValue]];
-        [myRover setFacingDir:inputComponents[2]];
+        //Before actually updating, we need to check if there's a collision in the sim, whether with another rover or the bounds of the grid.
+        bool hasCollision=[inputComponents[0] intValue]>[mySim getGridWidth]?true:false;
+        hasCollision=[inputComponents[1] intValue]>[mySim getGridHeight]?true:hasCollision;
+        //Run through each of the other (non-us) rovers and make sure they don't already occupy our chosen landing zone.
+        for(int iter=0;!hasCollision && iter<[mySim numberOfRovers];iter++)
+        {
+            if (iter!=self.roverIndex)
+            {
+                Rover* otherRover=[mySim getRover:iter];
+                if ([otherRover getStartX]==[inputComponents[0] intValue] && [otherRover getStartY]==[inputComponents[1] intValue])
+                    hasCollision=true;
+            }
+            if (hasCollision) break;
+            
+        }
+        if (hasCollision) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Rover location collision/out of bounds error"
+                                                            message:@"Please enter a location for this rover that does not put it in conflict with another rover, or beyond the grid boundaries."
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+            
+            self.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",[myRover getStartX],[myRover getStartY],[myRover getFacing]];
+            [alert show];
+        }
+        else {
+        //Otherwise -- UPDATE OUR ROVER WOOT!
+        
+        
+            [myRover updateXCoord:[inputComponents[0] intValue] andYCoord:[inputComponents[1] intValue]];
+            [myRover setFacingDir:inputComponents[2]];
+        }
         self.txtStartingLoc.text=[NSString stringWithFormat:@"%i:%i:%@",[myRover getStartX],[myRover getStartY],[myRover getFacing]];
     }
     
