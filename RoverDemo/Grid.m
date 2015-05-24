@@ -55,7 +55,7 @@
      Special case: The rover at our old position used to be in our new one. 
      We don't want to let rovers pass unseen in the night, so let's invalidate.
      */
-    if (oldLocList[locEntryPoint]==roverLocList[[rover getCurrentX]*width+[rover getCurrentY]])
+    if (oldLocList[locEntryPoint]==roverLocList[[rover getCurrentX]*width+[rover getCurrentY]] && ![oldLocList[locEntryPoint] isEqual:@0])
     {
         [self invalidate:[rover getCurrentX] andY:[rover getCurrentY] forRover:oldLocList[locEntryPoint] withOriginalRover:rover];
     }
@@ -110,6 +110,7 @@
     for(int x=0;x<width*height;x++)
     {
         roverLocList[x]=@0;
+        oldLocList[x]=@0;
     }
 }
 

@@ -17,16 +17,14 @@
 @end
 
 @implementation RoverDemoTests
-Rover* testRover;
-RoverCell* testCell;
+Simulator* testSim;
 
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     //Create test objects for the sanitization bits.
-    testRover=[[Rover alloc]initWithXCoord:4 andYcoord:4 andMoveSet:@"FFF" andFacing:@"S"];
-    testCell=[[RoverCell alloc] init];
+    testSim=[Simulator getSimulation];
 //    testCell.=testRover;
 }
 
@@ -35,33 +33,21 @@ RoverCell* testCell;
     [super tearDown];
 }
 
-//Make sure all the regular expression engines are properly configured.
--(void)testInputSanitization {
+//There was a situation mid-development where a certain combination of rovers would lead to a collision situation. I've ... addressed ... this.
+/*
+ Specifically, if a pair of rovers tried to move into each other's locations they could pass each other in the night.
+ */
+-(void)testBasicCollisionsNoError {
     
-    //We test this assertion by checking if the test successfully changed
-    //any values in the rover. (Or if a popup appears, which shouldn't happen)
-    testCell.txtStartingLoc.text=@"";
-    [testCell txtStartLocChanged:testCell.txtStartingLoc];
-    XCTAssertTrue([testRover.moveString isEqual:@""],@"Failure with blank text.");
-    
-    testCell.txtStartingLoc.text=@"3:3:S";
-    [testCell txtStartLocChanged:testCell.txtStartingLoc];
-    XCTAssertTrue([testRover getStartX] ==3,@"Failure with correct characters: X.");
-    XCTAssertTrue([testRover getStartY] ==3,@"Failure with correct characters: Y.");
-    XCTAssertTrue([[testRover getFacing] isEqual:@"S"],@"Failure with correct characters: Direction.");
-    
-}
--(void)testExtendedInput
-{
-    testCell.txtStartingLoc.text=@"32:31:South";
-    [testCell txtStartLocChanged:testCell.txtStartingLoc];
-    XCTAssertFalse([testRover getStartX] ==3,@"Failure with correct characters: X.");
-    XCTAssertFalse([testRover getStartY] ==3,@"Failure with correct characters: Y.");
-    XCTAssertTrue([[testRover getFacing] isEqual:@"S"],@"Failure with correct characters: Direction.");
+    [testSim updateGridWidth:6 andHeight:6];
+    [testSim addRoverAtX:0 andY:0 withMoveSet:@"F" andFacing:@"S"];
+    [testSim addRoverAtX:0 andY:1 withMoveSet:@"F" andFacing:@"E"];
+    [testSim addRoverAtX:1 andY:1 withMoveSet:@"F" andFacing:@"W"];
+    [testSim compute];
+    XCTAssertTrue([[testSim getRover:0] getCurrentY]==0,@"Failure: Interdicted robot 1 moved!");
+    XCTAssertTrue([[testSim getRover:1] getCurrentX]==0,@"Failure: Interdicted robot 2 moved!");
+    XCTAssertTrue([[testSim getRover:2] getCurrentX]==1,@"Failure: Interdicted robot 3 moved!");
     
     
-    testCell.txtStartingLoc.text=@"A:3:S";
-    [testCell txtStartLocChanged:testCell.txtStartingLoc];
-    XCTAssertFalse([testRover.moveString isEqual:@"FAR"],@"Failure with bad location characters.");
 }
 @end

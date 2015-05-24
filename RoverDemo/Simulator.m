@@ -44,6 +44,16 @@
 {
     bool movesLeft=false;
     [myGrid resetMoves];//Call before every tick.
+    /*
+     This call ensures that if the engine needs to pre-set the locations of all rovers, it's done.
+     */
+    if ([myGrid respondsToSelector:@selector(startFromX:andY:forRover:)])
+    {
+        for(Rover* rover in myRovers)
+        {
+            [myGrid startFromX:[rover getCurrentX] andY:[rover getCurrentY] forRover:rover];
+        }
+    }
     for(Rover* rover in myRovers)
     {
         //Attempt to place a rover on the board at its next location.
@@ -174,6 +184,13 @@
         return;
     }
     [myRovers removeObjectAtIndex:roverIndex];
+}
+//Function to hot-swap our operating code. Replace the grid and reset.
+-(void)setGrid:(id<GridProtocol>)newGrid
+{
+    [newGrid initWithWidth:[myGrid getWidth] andHeight:[myGrid getHeight]];
+    myGrid=newGrid;
+    [self resetPositions];
 }
 
 @end

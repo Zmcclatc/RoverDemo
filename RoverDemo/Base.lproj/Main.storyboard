@@ -202,7 +202,7 @@
         <!--PreferenceView-->
         <scene sceneID="A2J-Xe-0CU">
             <objects>
-                <viewController title="PreferenceView" id="YXw-Ma-KHv" sceneMemberID="viewController">
+                <viewController title="PreferenceView" id="YXw-Ma-KHv" customClass="PreferenceViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rzo-a9-elU"/>
                         <viewControllerLayoutGuide type="bottom" id="YE6-d1-ygg"/>
@@ -212,20 +212,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFR-9n-vMH">
-                                <rect key="frame" x="150" y="42" width="300" height="143"/>
+                                <rect key="frame" x="155" y="42" width="290" height="143"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simulation Collision Handling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzo-Ez-TA5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Simulation Collision Handling" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzo-Ez-TA5">
                                         <rect key="frame" x="33" y="43" width="234" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zK0-6j-NGA">
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zK0-6j-NGA">
                                         <rect key="frame" x="40" y="72" width="221" height="29"/>
                                         <segments>
                                             <segment title="Simultaneous"/>
                                             <segment title="In Order"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="collisionModeChanged:" destination="YXw-Ma-KHv" eventType="valueChanged" id="Fyl-3M-PSE"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,6 +249,11 @@
                             <constraint firstItem="YE6-d1-ygg" firstAttribute="top" secondItem="bFR-9n-vMH" secondAttribute="bottom" constant="366" id="S1k-N1-c4r"/>
                             <constraint firstItem="bFR-9n-vMH" firstAttribute="centerX" secondItem="xeS-RM-tUs" secondAttribute="centerX" id="Ydy-y3-by2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="29e-BX-SSu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Preferences" image="clip_clip_small" id="UvN-tT-LPg"/>
                 </viewController>

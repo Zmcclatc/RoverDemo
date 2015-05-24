@@ -19,6 +19,8 @@
 		CE35877E1B0E99CD00B58324 /* Rover.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35877D1B0E99CD00B58324 /* Rover.m */; };
 		CE3587811B0E99DE00B58324 /* Grid.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587801B0E99DE00B58324 /* Grid.m */; };
 		CE3587841B0EA24D00B58324 /* RoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3587831B0EA24D00B58324 /* RoverCell.m */; };
+		CEC448F81B123E6200900B4F /* Grid_Sequential.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC448F71B123E6200900B4F /* Grid_Sequential.m */; };
+		CEC448FB1B1242AA00900B4F /* PreferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC448FA1B1242AA00900B4F /* PreferenceViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		CE3587801B0E99DE00B58324 /* Grid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid.m; sourceTree = "<group>"; };
 		CE3587821B0EA24D00B58324 /* RoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoverCell.h; sourceTree = "<group>"; };
 		CE3587831B0EA24D00B58324 /* RoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoverCell.m; sourceTree = "<group>"; };
+		CEC448F61B123E6200900B4F /* Grid_Sequential.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Grid_Sequential.h; sourceTree = "<group>"; };
+		CEC448F71B123E6200900B4F /* Grid_Sequential.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Grid_Sequential.m; sourceTree = "<group>"; };
+		CEC448F91B1242AA00900B4F /* PreferenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferenceViewController.h; sourceTree = "<group>"; };
+		CEC448FA1B1242AA00900B4F /* PreferenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferenceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +149,8 @@
 				CE3587581B0E907C00B58324 /* SimulationViewController.m */,
 				CE3587821B0EA24D00B58324 /* RoverCell.h */,
 				CE3587831B0EA24D00B58324 /* RoverCell.m */,
+				CEC448F91B1242AA00900B4F /* PreferenceViewController.h */,
+				CEC448FA1B1242AA00900B4F /* PreferenceViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -156,6 +164,8 @@
 				CE35877D1B0E99CD00B58324 /* Rover.m */,
 				CE35877F1B0E99DE00B58324 /* Grid.h */,
 				CE3587801B0E99DE00B58324 /* Grid.m */,
+				CEC448F61B123E6200900B4F /* Grid_Sequential.h */,
+				CEC448F71B123E6200900B4F /* Grid_Sequential.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -271,6 +281,8 @@
 				CE35877E1B0E99CD00B58324 /* Rover.m in Sources */,
 				CE3587591B0E907C00B58324 /* SimulationViewController.m in Sources */,
 				CE35877B1B0E99BD00B58324 /* Simulator.m in Sources */,
+				CEC448FB1B1242AA00900B4F /* PreferenceViewController.m in Sources */,
+				CEC448F81B123E6200900B4F /* Grid_Sequential.m in Sources */,
 				CE3587811B0E99DE00B58324 /* Grid.m in Sources */,
 				CE3587841B0EA24D00B58324 /* RoverCell.m in Sources */,
 				CE3587531B0E907C00B58324 /* AppDelegate.m in Sources */,

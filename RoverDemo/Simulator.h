@@ -30,6 +30,8 @@
 
 @optional
 -(id)initWithWidth:(int)gridWidth andHeight:(int)gridHeight;
+//Fill in the place the rover started.
+-(void)startFromX:(int)newX andY:(int)newY forRover:(Rover*)rover;
 
 @end
 
@@ -60,5 +62,7 @@
 //Getter methods for controlling input and the visual side of the simulation.
 -(int)getGridWidth;
 -(int)getGridHeight;
+
+-(void)setGrid:(id<GridProtocol>)newGrid;
 
 @end
