@@ -13,6 +13,7 @@
 - (IBAction)btnComplete:(id)sender;
 - (IBAction)btnReset:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *viewDisplay;
+@property (weak, nonatomic) IBOutlet UIScrollView *viewMapScroller;
 
 
 @end
